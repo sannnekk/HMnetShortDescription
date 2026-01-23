@@ -1,0 +1,31 @@
+{
+    "name": "hmnet/short-description",
+    "description": "Adds a short description field (max 1000 chars) to products",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "shopware/core": "~6.7.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "HMnetShortDescription\\HMnetShortDescription",
+        "label": {
+            "de-DE": "HMnet Kurzbeschreibung",
+            "en-GB": "HMnet Short Description"
+        },
+        "description": {
+            "de-DE": "Fügt Produkten ein zusätzliches Kurzbeschreibungsfeld (max. 1000 Zeichen) hinzu.",
+            "en-GB": "Adds a short description field (max 1000 chars) to products."
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "HMnetShortDescription\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HMnetShortDescription\\Tests\\": "tests/"
+        }
+    }
+}

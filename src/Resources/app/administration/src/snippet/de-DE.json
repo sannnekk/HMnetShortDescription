@@ -1,0 +1,9 @@
+{
+	"hmnet-short-description": {
+		"product": {
+			"labelShortDescription": "Kurzbeschreibung",
+			"placeholderShortDescription": "Kurzbeschreibung eingeben (max. 1000 Zeichen)...",
+			"errorTooLong": "Die Kurzbeschreibung darf maximal 1000 Zeichen lang sein."
+		}
+	}
+}
