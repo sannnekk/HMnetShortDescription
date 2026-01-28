@@ -1,5 +1,5 @@
 {% block sw_product_basic_form_description_field %}
 	{% parent %}
 
-	<sw-textarea-field v-model:value="shortDescriptionValue" class="sw-product-basic-form__short-description" :label="$tc('hmnet-short-description.product.labelShortDescription')" :placeholder="$tc('hmnet-short-description.product.placeholderShortDescription')" :disabled="!allowEdit" :maxlength="1000" :error="shortDescriptionError"/>
+	<sw-textarea-field v-model="shortDescriptionValue" class="sw-product-basic-form__short-description" :label="$tc('hmnet-short-description.product.labelShortDescription')" :placeholder="$tc('hmnet-short-description.product.placeholderShortDescription')" :disabled="!allowEdit" :maxlength="1000" :error="shortDescriptionError"/>
 {% endblock %}
