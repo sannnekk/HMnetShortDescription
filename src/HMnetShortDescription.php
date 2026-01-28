@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HMnetShortDescription;
 
 use Doctrine\DBAL\Connection;
+use HMnetShortDescription\Migration\Migration1769558401DropShortDescriptionSchema;
 use Shopware\Core\Framework\Plugin;
 use Shopware\Core\Framework\Plugin\Context\InstallContext;
 use Shopware\Core\Framework\Plugin\Context\UninstallContext;
@@ -25,7 +26,7 @@ class HMnetShortDescription extends Plugin
             return;
         }
 
-        $this->dropTables();
+        $this->dropSchema($uninstallContext);
     }
 
     public function update(UpdateContext $updateContext): void
@@ -33,10 +34,19 @@ class HMnetShortDescription extends Plugin
         parent::update($updateContext);
     }
 
-    private function dropTables(): void
+    private function dropSchema(UninstallContext $uninstallContext): void
     {
+        if ($uninstallContext->keepUserData() || $this->container === null) {
+            return;
+        }
+
+        if (!$this->container->has(Connection::class)) {
+            return;
+        }
+
         $connection = $this->container->get(Connection::class);
 
-        $connection->executeStatement('DROP TABLE IF EXISTS `hmnet_short_description`');
+        $migration = new Migration1769558401DropShortDescriptionSchema();
+        $migration->drop($connection);
     }
 }

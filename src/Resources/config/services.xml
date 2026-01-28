@@ -5,9 +5,14 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <!-- Short Description Entity -->
-        <service id="HMnetShortDescription\Core\Content\ShortDescription\ShortDescriptionEntity">
-            <tag name="shopware.entity"/>
+        <!-- Short Description Entity Definition -->
+        <service id="HMnetShortDescription\Core\Content\ShortDescription\ShortDescriptionDefinition">
+            <tag name="shopware.entity.definition" entity="hmnet_short_description" />
+        </service>
+
+        <!-- Short Description Translation Definition -->
+        <service id="HMnetShortDescription\Core\Content\ShortDescription\Aggregate\ShortDescriptionTranslation\ShortDescriptionTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="hmnet_short_description_translation" />
         </service>
 
         <!-- Product Extension for Short Description -->

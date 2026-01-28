@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HMnetShortDescription\Core\Content\Product;
 
-use HMnetShortDescription\Core\Content\ShortDescription\ShortDescriptionEntity;
+use HMnetShortDescription\Core\Content\ShortDescription\ShortDescriptionDefinition;
 use Shopware\Core\Content\Product\ProductDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityExtension;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\CascadeDelete;
@@ -30,7 +30,7 @@ class ShortDescriptionProductExtension extends EntityExtension
 				'hmnetShortDescription',
 				'id',
 				'product_id',
-				ShortDescriptionEntity::ENTITY_NAME,
+				ShortDescriptionDefinition::class,
 				true
 			))->addFlags(new CascadeDelete())
 		);

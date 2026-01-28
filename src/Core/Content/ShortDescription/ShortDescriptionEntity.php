@@ -4,42 +4,72 @@ declare(strict_types=1);
 
 namespace HMnetShortDescription\Core\Content\ShortDescription;
 
+use HMnetShortDescription\Core\Content\ShortDescription\Aggregate\ShortDescriptionTranslation\ShortDescriptionTranslationCollection;
 use Shopware\Core\Content\Product\ProductEntity;
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
-use Shopware\Core\Framework\DataAbstractionLayer\Attribute\Entity as EntityAttribute;
-use Shopware\Core\Framework\DataAbstractionLayer\Attribute\Field;
-use Shopware\Core\Framework\DataAbstractionLayer\Attribute\FieldType;
-use Shopware\Core\Framework\DataAbstractionLayer\Attribute\ForeignKey;
-use Shopware\Core\Framework\DataAbstractionLayer\Attribute\OnDelete;
-use Shopware\Core\Framework\DataAbstractionLayer\Attribute\PrimaryKey;
-use Shopware\Core\Framework\DataAbstractionLayer\Attribute\ManyToOne;
-use Shopware\Core\Framework\DataAbstractionLayer\Attribute\ReferenceVersion;
-use Shopware\Core\Framework\DataAbstractionLayer\Attribute\Required;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 
-#[EntityAttribute(
-	name: ShortDescriptionEntity::ENTITY_NAME
-)]
 class ShortDescriptionEntity extends Entity
 {
-	public const ENTITY_NAME = 'hmnet_short_description';
+	use EntityIdTrait;
 
-	#[PrimaryKey]
-	#[Field(type: FieldType::UUID, api: true)]
-	public string $id;
+	protected ?string $productId = null;
 
-	#[ForeignKey(entity: 'product', column: 'product_id', api: true)]
-	public ?string $productId = null;
+	protected ?string $productVersionId = null;
 
-	#[ReferenceVersion(entity: 'product')]
-	public ?string $productVersionId = null;
+	protected ?string $shortDescription = null;
 
-	#[Field(type: FieldType::TEXT, api: true)]
-	public ?string $shortDescription = null;
+	protected ?ProductEntity $product = null;
 
-	#[ManyToOne(
-		entity: 'product',
-		ref: 'id',
-		onDelete: OnDelete::CASCADE
-	)]
-	public ?ProductEntity $product = null;
+	protected ?ShortDescriptionTranslationCollection $translations = null;
+
+	public function getProductId(): ?string
+	{
+		return $this->productId;
+	}
+
+	public function setProductId(?string $productId): void
+	{
+		$this->productId = $productId;
+	}
+
+	public function getProductVersionId(): ?string
+	{
+		return $this->productVersionId;
+	}
+
+	public function setProductVersionId(?string $productVersionId): void
+	{
+		$this->productVersionId = $productVersionId;
+	}
+
+	public function getShortDescription(): ?string
+	{
+		return $this->shortDescription;
+	}
+
+	public function setShortDescription(?string $shortDescription): void
+	{
+		$this->shortDescription = $shortDescription;
+	}
+
+	public function getProduct(): ?ProductEntity
+	{
+		return $this->product;
+	}
+
+	public function setProduct(?ProductEntity $product): void
+	{
+		$this->product = $product;
+	}
+
+	public function getTranslations(): ?ShortDescriptionTranslationCollection
+	{
+		return $this->translations;
+	}
+
+	public function setTranslations(?ShortDescriptionTranslationCollection $translations): void
+	{
+		$this->translations = $translations;
+	}
 }
