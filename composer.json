@@ -10,12 +10,16 @@
     "extra": {
         "shopware-plugin-class": "HMnetShortDescription\\HMnetShortDescription",
         "label": {
-            "de-DE": "HMnet Kurzbeschreibung",
-            "en-GB": "HMnet Short Description"
+            "de-DE": "HMnet: Kurzbeschreibung",
+            "en-GB": "HMnet: Short Description"
         },
         "description": {
             "de-DE": "Fügt Produkten ein zusätzliches Kurzbeschreibungsfeld (max. 1000 Zeichen) hinzu.",
             "en-GB": "Adds a short description field (max 1000 chars) to products."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://hmnet.de/",
+            "en-GB": "https://hmnet.de/"
         }
     },
     "autoload": {
